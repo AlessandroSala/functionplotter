@@ -70,37 +70,20 @@ function entryPoint(){
     func = func.replace(/\^/g, "**");
     //trasformazione dei logaritmi
     let pattern_log=  /log/g;
-    func = func.replace(pattern_log, "Math.log");
-
+    func = func.replace(pattern_log, "Math.log10");
     //trasformazione dei logaritmi in base naturale (e)
-    let pattern_ln= /ln\(\w*\)?/;
-    while(func.includes("ln")){
-        res = pattern_ln.exec(func);
-        if(res.toString().includes(")")){
-            func = func.replace(res,"(Math.log"+/\(.*\)/.exec(res.toString())+")/(Math.log(Math.E))");
-        }
-        else{
-            let i = func.indexOf(res.toString())+2;
-            let ch = func.charAt(i);
-            let replacement = "";
-            while(ch!=")"){
-                replacement=replacement+func.charAt(i);
-                i++;
-                ch = func.charAt(i);
-            }
-            replacement=replacement+")";
-            func = func.replace("ln"+replacement,"(Math.log"+replacement+")/(Math.log(Math.E))");
-        }
-    }
+    func = func.replace(/ln/g, "Math.log");
+    
+
+
     console.log(func);
-    console.log("ciao");
     try{
         let x=0;
         eval(func);
         //immissione funzione nel grafico
         grafici.push(new Grafico(currColor, func));
     } catch(e){
-        alert("La funzione inserita non è valida");
+        alert("La funzione inserita non e' valida");
     }
 }
 
@@ -119,7 +102,7 @@ function drawAxes(){
     ctx.lineTo(0, height/2);
     
     //Griglia
-    var num=6;  //Numero linee
+    var num=10;  //Numero linee
     for(let i=0; i<num; i++){
         let x_comp=width*i/num-width/2;
         //SPERIMENTALE
