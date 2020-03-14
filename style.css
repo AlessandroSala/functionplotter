@@ -78,6 +78,7 @@ html, body{
     width:90%;
     text-align: center;
     height: 30px;
+    outline: none;
     background: none;
     border: 2px solid var(--inputs-border-color);
     transition: all 0.4s ease 0s;
