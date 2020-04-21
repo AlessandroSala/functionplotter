@@ -151,3 +151,9 @@ function drawGraph(){
 setInterval(drawGraph, 1000/60);
 
 drawAxes();
+
+function reset(){
+    grafici = [];
+    ctx.clearRect(-tX, -tY, width, height);
+    drawAxes();
+}
