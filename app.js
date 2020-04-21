@@ -69,11 +69,16 @@ function entryPoint(){
     //pattern (espressioni regolari/regex) e manipolazione delle stringhe
     func = func.replace(/\^/g, "**");
     //trasformazione dei logaritmi
-    let pattern_log=  /log/g;
-    func = func.replace(pattern_log, "Math.log10");
+    func = func.replace(/log/g, "Math.log10");
     //trasformazione dei logaritmi in base naturale (e)
     func = func.replace(/ln/g, "Math.log");
-    
+    //trasformazione seno
+    func = func.replace(/sin/g, "Math.sin");
+    //trasformazione coseno
+    func = func.replace(/cos/g, "Math.cos");
+
+
+
 
 
     console.log(func);
