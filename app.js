@@ -49,6 +49,9 @@ canv.addEventListener('wheel',function(event){
     //Rotella su
     if (event.deltaY < 0) {
         u--;
+        if(u<0) {
+            u=0.001;
+        }
         ctx.clearRect(-tX, -tY, width, height);
         drawAxes();
     }
