@@ -5,6 +5,11 @@
 html, body{
     font-family:Verdana,sans-serif;
 }
+
+.active {
+    background-color: #ff9100;
+}
+
 :root {
     --navbar-ul-color: #000000;
     --navbar-selection-color: #323232;
