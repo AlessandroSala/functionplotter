@@ -1,4 +1,5 @@
 //Classi
+//Classi
 /*
     Grafico(Colore linea, stringa funzione)
 */
@@ -53,12 +54,14 @@ canv.addEventListener('wheel',function(event){
             u=0.001;
         }
         ctx.clearRect(-tX, -tY, width, height);
+        drawGraph();
         drawAxes();
     }
     //Rotella giù
     else if (event.deltaY > 0) {
         u++;
         ctx.clearRect(-tX, -tY, width, height);
+        drawGraph();
         drawAxes();
     }
     return false; 
@@ -79,7 +82,7 @@ function entryPoint(){
     func = func.replace(/sin/g, "Math.sin");
     //trasformazione coseno
     func = func.replace(/cos/g, "Math.cos");
-
+	
 
 
 
@@ -90,6 +93,7 @@ function entryPoint(){
         eval(func);
         //immissione funzione nel grafico
         grafici.push(new Grafico(currColor, func));
+        drawGraph();
     } catch(e){
         alert("La funzione inserita non e' valida");
     }
@@ -98,8 +102,8 @@ function entryPoint(){
 function drawAxes(){
     //Intervallo di rappresentazione
     ctx.font = "15px Arial";
-    ctx.fillText(Math.round(-u*100)/100, -width/2+10, -10);
-    ctx.fillText(Math.round(u*100)/100, width/2-40, -10);
+    ctx.fillText(Math.round(-u*1000)/1000, -width/2+10, -10);
+    ctx.fillText(Math.round(u*1000)/1000, width/2-40, -10);
 
     ctx.beginPath();
     ctx.strokeStyle='#888';
@@ -138,17 +142,13 @@ function drawGraph(){
         ctx.strokeStyle = grafici[j].color;
         ctx.moveTo(-10000, 0);
         for(let i=-width/2; i<width/2; i++){
-            let c=function(i){
-                return i*u/(width/2);
-            }
-            let r=function(x){
-                return -(grafici[j].f(x))*(width/(2*u));
-            }
+            let y_value = -(grafici[j].f(i*u/(width/2)))*(width/(2*u));
             
-            if(Math.abs(r(c(i)))==Infinity) {
-                ctx.moveTo(i+1, r(c(i+1)));
+            
+            if(Math.abs(y_value)==Infinity) {
+                ctx.moveTo(i+1, y_value);
             } else {
-                ctx.lineTo(i, r(c(i)));
+                ctx.lineTo(i, y_value);
             }
             ctx.stroke();
         }
@@ -156,7 +156,7 @@ function drawGraph(){
     }   
 }
 
-setInterval(drawGraph, 1000/60);
+//setInterval(drawGraph, 1000/60);
 
 drawAxes();
 
