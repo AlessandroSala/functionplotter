@@ -7,6 +7,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="utf-8"/>
         <style>
+            table, td, th, tr {
+                padding: 2px;
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
             .input{
                 background-color: #ffaa2a;
                 border: 3px;
@@ -78,7 +83,7 @@
      echo "<br>";
    }
    else{
-    echo "<table class='table3' style=' border: 1px solid black;'>";
+    echo "<table class='table3'>";
     echo "<tr>";
     echo "<th>"."Id"."</th>";
     echo "<th>"."Consegna"."</th>"; 
@@ -94,7 +99,7 @@
       echo "<td>".$Id."</td>";
       echo"<td>". $consegna."</td>";      
       echo"<td>". $nome."</td>";
-        echo"<td>"." <form method='POST' name='Esegui' action='grafico.php'>"."<input class='input' name='funzione' value='".$consegna."' size='0' type='hidden'/>"."<div id='buttom'><input class='input' type='submit' value='Esegui' name='B1'/></div>";
+        echo"<td><form method='POST' name='Esegui' action='grafico.php'>"."<input class='input' name='funzione' value='".$consegna."' size='0' type='hidden'/>"."<div id='buttom'><input class='input' type='submit' value='Esegui' name='B1'/></div>";
         echo "</form>"."</td>";
         echo"</tr>";
     }
