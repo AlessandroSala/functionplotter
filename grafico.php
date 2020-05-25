@@ -19,10 +19,13 @@
             <div style="display:block; width:100%; height: 90%;">
 
                 <div id="sidebar_id" class="sidebar">
-                <?php $f=$_POST['funzione'];
+                <?php if(!empty($_POST)){
+                    $f=$_POST['funzione'];
 
                         echo " <input class='func_input' type='text' id='f-tbox' value ='$f' placeholder='inserire la funzione'>";
-
+                } else {
+                    echo " <input class='func_input' type='text' id='f-tbox' value ='' placeholder='inserire la funzione'>";
+                }
                         ?>
                     <br>
                     <button class="draw_button" onclick="entryPoint()">Disegna</button>

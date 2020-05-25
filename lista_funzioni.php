@@ -55,11 +55,11 @@
 <div class="wrap">
             <ul id="nav" class="navbar">
                 <li class="li_nav"><a  href="index.html">Homepage</a></li>
-                <li class="li_nav"><a href="grafico.html">Grafico</a></li>
+                <li class="li_nav"><a href="grafico.php">Grafico</a></li>
                 <li class="li_nav"><a class="active" href="lista_funzioni.php">Lista funzioni</a></li>
                 <li class="li_nav"><a href="about.html">Informazioni</a></li>
             </ul>
-    <div style="padding: 50px;"align="center"> 
+    <div style="padding: 50px;" align="center"> 
 
 	<?php
  $conn = mysqli_connect("localhost", "root", "");
@@ -78,7 +78,7 @@
      echo "<br>";
    }
    else{
-    echo "<table class='table3'>";
+    echo "<table class='table3' style=' border: 1px solid black;'>";
     echo "<tr>";
     echo "<th>"."Id"."</th>";
     echo "<th>"."Consegna"."</th>"; 
@@ -94,9 +94,9 @@
       echo "<td>".$Id."</td>";
       echo"<td>". $consegna."</td>";      
       echo"<td>". $nome."</td>";
-    echo"<td>"." <form method='POST' name='Esegui' action='grafico.php'>"."<input class='input' name='funzione' value='".$consegna."' size='0' type='hidden'/>"."<div id='buttom'><input class='input' type='submit' value='Esegui' name='B1'/></div>";
-    echo "</form>"."</td>";
-    echo"</tr>";
+        echo"<td>"." <form method='POST' name='Esegui' action='grafico.php'>"."<input class='input' name='funzione' value='".$consegna."' size='0' type='hidden'/>"."<div id='buttom'><input class='input' type='submit' value='Esegui' name='B1'/></div>";
+        echo "</form>"."</td>";
+        echo"</tr>";
     }
     echo "</table>";
    }
